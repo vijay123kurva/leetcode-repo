@@ -1,5 +1,6 @@
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
+        // remainder , Index
         HashMap<Integer,Integer> mp = new HashMap<>();
         int prefix = 0;
         mp.put(0,-1);
