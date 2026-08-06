@@ -8,7 +8,7 @@ class Solution {
         for(int i=0;i<n;i++){
             prefix +=nums[i];
             int rem = prefix%k;
-            //if rem value is nagavtive we can add k to make it positive vlaue
+            //if rem value is -ve we can add k to make it positive vlaue
             if(rem<0){
                rem+=k;
             }
