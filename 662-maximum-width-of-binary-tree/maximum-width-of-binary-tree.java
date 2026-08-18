@@ -1,9 +1,9 @@
 class Solution {
     class Pair {
         TreeNode node;
-        long index;
+        int index;
 
-        Pair(TreeNode node, long index) {
+        Pair(TreeNode node, int index) {
             this.node = node;
             this.index = index;
         }
@@ -19,23 +19,23 @@ class Solution {
 
         while (!q.isEmpty()) {
             int size = q.size();
-            long first = q.peekFirst().index;
-            long last = first;
+
+            int start = q.peekFirst().index;
+            int end = q.peekLast().index;
+
+            maxWidth = Math.max(maxWidth, end - start + 1);
 
             for (int i = 0; i < size; i++) {
-                Pair current = q.poll();
-                last = current.index;
+                Pair curr = q.poll();
 
-                if (current.node.left != null) {
-                    q.offer(new Pair(current.node.left, 2 * current.index + 1));
+                if (curr.node.left != null) {
+                    q.offer(new Pair(curr.node.left, 2 * curr.index + 1));
                 }
 
-                if (current.node.right != null) {
-                    q.offer(new Pair(current.node.right, 2 * current.index + 2));
+                if (curr.node.right != null) {
+                    q.offer(new Pair(curr.node.right, 2 * curr.index + 2));
                 }
             }
-
-            maxWidth = Math.max(maxWidth, (int)(last - first + 1));
         }
 
         return maxWidth;
